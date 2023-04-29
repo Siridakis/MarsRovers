@@ -24,7 +24,6 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
   console.log([...rover1.mov_sequence])
   for (let i = 0; i < [...rover1.mov_sequence].length; i++) {
     let command = [...rover1.mov_sequence][i]
-    console.log(command)
     switch (command) {
       case 'M': rover1_pos = moveRover(rover1_pos); break;
       case 'L': rover1_pos = turnRover(rover1_pos,'L'); break;
@@ -37,7 +36,6 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
   console.log([...rover2.mov_sequence])
   for (let i = 0; i < [...rover2.mov_sequence].length; i++) {
     let command = [...rover2.mov_sequence][i]
-    console.log(command)
     switch (command) {
       case 'M': rover2_pos = moveRover(rover2_pos); break;
       case 'L': rover2_pos = turnRover(rover2_pos,'L'); break;
@@ -50,8 +48,6 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
   if (log1.find(element => (element.x == rover2_initial_x && element.y == rover2_initial_y))) {
     return 'Movement sequence for rover 1 will result in collision with rover 2'
   }
-
-  console.log(rover2.y,rover2.x)
 
   if (log1.find(element => (element.x > max_X || element.x < 0 || element.y > max_Y || element.y < 0))) {
     return 'Rover 1 movement sequence will lead it out of the plateau'
@@ -88,13 +84,10 @@ function moveRover(rover: Rover) {
 function turnRover(rover: Rover, command: string) {
   const directions = ['N','E','S','W']
   let directionIndex = directions.indexOf(rover.facing)
-  console.log('directionIndex',directionIndex)
   if (command == 'L') {
-    console.log((directionIndex + 3) % 4)
     rover.facing = directions[(directionIndex + 3) % 4]
   }
   if (command == 'R') {
-    console.log((directionIndex + 1) % 4)
     rover.facing = directions[(directionIndex + 1) % 4]
   }
   return rover
