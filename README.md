@@ -30,12 +30,12 @@ The output for each rover should be its final co-ordinates and heading.
 
 ## Rover Data Example
 
-**Example 1**
-Landing Position: 1 2 N
-Instruction: LMLMLMLMM
-Final Position: 1 3 N
+**Example 1** <br>
+Landing Position: 1 2 N <br>
+Instruction: LMLMLMLMM <br>
+Final Position: 1 3 N <br>
 
-**Example 2**
-Landing Position: 3 3 E
-Instruction: MRRMMRMRRM
-Final Position: 2 3 S
+**Example 2** <br>
+Landing Position: 3 3 E <br>
+Instruction: MRRMMRMRRM <br>
+Final Position: 2 3 S <br>
