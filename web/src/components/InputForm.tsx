@@ -73,7 +73,7 @@ export function InputForm() {
         </div>
         {roverNumbers.map(num => {
           return (
-        <div className="p-2 rounded-lg bg-white bg-opacity-50">
+        <div key={num} className="p-2 rounded-lg bg-white bg-opacity-50">
           <h1 className="font-semibold text-lg mb-4">Rover {num}</h1>
           <h2 className="font-medium mb-2 align-middle">Landing position</h2>
           <div className="flex content-center h-6 my-2">

@@ -1,7 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import { roversMovementOutput } from './utils/roversMovementOutput'
 import { MongoClient } from "mongodb";
+import dayjs from 'dayjs';
+import { roversMovementOutput } from './utils/roversMovementOutput'
+
 
 const uri = 'mongodb://127.0.0.1:27017'
 const mongoClient = new MongoClient(uri)
@@ -10,10 +12,11 @@ const mongoClient = new MongoClient(uri)
 async function insertLog(log:{}) {
 
   try {
+    await mongoClient.connect()
     const database = mongoClient.db("MarsRoversDB");
     const collection = database.collection("MarsRoversLogs");
 
-    const result = await collection.insertOne(log);
+    const result = await collection.insertOne({date: dayjs().format('DD/MM/YYYY'),time: dayjs().format('HH:mm:ss:SSS'), ...log});
     console.log(`A document was inserted with the _id: ${result.insertedId}`);
   }
    finally {
