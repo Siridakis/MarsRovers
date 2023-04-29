@@ -12,7 +12,7 @@ In order to control a rover , NASA sends a simple string of letters. The possibl
 
 Assume that the square directly North from (x, y) is (x, y+1).
 
-##Input
+## Input
 
 The first line of input is the upper-right coordinates of the plateau, the lower-left coordinates are assumed to be (0, 0).
 
@@ -24,11 +24,11 @@ Each rover will be finished sequentially, which means that the second rover wonâ
 
 The application should allow the user to interact with it to define the plateau size and the rover data.
 
-##Output
+## Output
 
 The output for each rover should be its final co-ordinates and heading.
 
-##Rover Data Example
+## Rover Data Example
 
 **Example 1**
 Landing Position: 1 2 N
