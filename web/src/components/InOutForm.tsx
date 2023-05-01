@@ -101,7 +101,7 @@ export function InOutForm() {
               </label>
               <input className="mx-2 rounded-lg w-16 text-center border border-black"
                 type="text"
-                pattern="^[NESW]$"
+                pattern="^[NnEeSsWw]$"
                 maxLength={1}
                 defaultValue={roverInput[`rover${num}`].facing}
                 id={`rover${num}D`}
@@ -114,7 +114,7 @@ export function InOutForm() {
               </label>
               <input className="mx-2 rounded-lg w-56 text-center border border-black"
                 type="text"
-                pattern="[LRM]*"
+                pattern="[LlRrMm]*"
                 id={`rover${num}seq`}
                 onChange={event => setRoverInput(prevState => ({...prevState, [`rover${num}`]: {...prevState[`rover${num}`], mov_sequence: event.target.value}}))}
               />

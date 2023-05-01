@@ -1,4 +1,6 @@
 import { Rover, MarsRoverInput} from '../types/marsRoversInterfaces'
+import cloneDeep from 'lodash/cloneDeep';
+
 
 export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
   const max_X = plateau.x - 1;
@@ -12,8 +14,8 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
     return 'Rover 2 landing position exceeds the plateau size'
   }
 
-  let rover1_pos = rover1;
-  let rover2_pos = rover2;
+  let rover1_pos = cloneDeep(rover1);
+  let rover2_pos = cloneDeep(rover2);
 
   const rover2_initial_x = rover2.x;
   const rover2_initial_y = rover2.y;
@@ -24,7 +26,7 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
   console.log([...rover1.mov_sequence])
   for (let i = 0; i < [...rover1.mov_sequence].length; i++) {
     let command = [...rover1.mov_sequence][i]
-    switch (command) {
+    switch (command.toUpperCase()) {
       case 'M': rover1_pos = moveRover(rover1_pos); break;
       case 'L': rover1_pos = turnRover(rover1_pos,'L'); break;
       case 'R': rover1_pos = turnRover(rover1_pos,'R'); break;
@@ -36,7 +38,7 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
   console.log([...rover2.mov_sequence])
   for (let i = 0; i < [...rover2.mov_sequence].length; i++) {
     let command = [...rover2.mov_sequence][i]
-    switch (command) {
+    switch (command.toUpperCase()) {
       case 'M': rover2_pos = moveRover(rover2_pos); break;
       case 'L': rover2_pos = turnRover(rover2_pos,'L'); break;
       case 'R': rover2_pos = turnRover(rover2_pos,'R'); break;
@@ -71,7 +73,7 @@ export function roversMovementOutput({plateau, rover1, rover2}:MarsRoverInput) {
 }
 
 function moveRover(rover: Rover) {
-  switch (rover.facing) {
+  switch (rover.facing.toUpperCase()) {
     case 'N': rover.y += 1; break;
     case 'E': rover.x += 1; break;
     case 'S': rover.y -= 1; break;
